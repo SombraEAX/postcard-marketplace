@@ -1,0 +1,17 @@
+.mob-carousel-outer{
+  width:100vw;
+  flex:1;
+  margin-left:-10px;
+  margin-right:-10px;
+  overflow:hidden
+}
+.mob-carousel-inner{
+  width:500%;
+  margin-left:-200%;
+  position:relative
+}
+.mob-carousel-image{
+  background-size:cover;
+  position:absolute;
+  background-color:#000
+}

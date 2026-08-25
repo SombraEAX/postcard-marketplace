@@ -1,0 +1,277 @@
+html{
+  overflow-x:hidden;
+  overflow-y:auto;
+  scroll-behavior:smooth
+}
+body{
+  padding:0px;
+  margin:0px;
+  min-height:100%;
+  font-family:sans-serif
+}
+
+@font-face{
+  font-family:"Poppins";
+  src:url("/fonts/Poppins-SemiBold.ttf")
+}
+@font-face{
+  font-family:"PoppinsRegular";
+  src:url("/fonts/Poppins-Regular.ttf")
+}
+@font-face{
+  font-family:"PoppinsBold";
+  src:url("/fonts/Poppins-Bold.ttf")
+}
+
+#root{
+  display:flex;
+  flex-direction:column;
+  box-sizing:border-box;
+  min-height:100vh;
+  padding:20px
+}
+
+.global{
+  display:flex;
+  flex-direction:column;
+  box-sizing:border-box;
+}
+
+h1{
+  font-family:"Poppins";
+  font-size:6vw;
+  text-transform:uppercase;
+  line-height:6.5vw;
+  margin:0px
+}
+h2{
+  font-family:"Poppins";
+  font-size:62px;
+  text-align:center;
+  padding-top:15px;
+  padding-bottom:15px;
+  text-transform:uppercase
+}
+.section-text{
+  max-width:600px;
+  margin:0 auto 40px;
+  text-align:center;
+  font-size:14px;
+  line-height:22px;
+  color:#333
+}
+
+main{
+  box-sizing:border-box;
+  padding-left:100px;
+  padding-right:100px
+}
+.bottom-line{
+  border-bottom:1px solid #000
+}
+.partners-links{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  gap:25px;
+  margin-bottom:50px
+}
+.partner-link{
+  background-color:transparent;
+  cursor:pointer;
+  color:#000;
+  border:3px solid;
+  height:115px;
+  min-height:95px;
+  padding:0px;
+  box-sizing:border-box;
+  flex:1;
+  display:flex;
+  flex-direction:row
+}
+.partner-link:hover{
+  border-color:#e98f41
+}
+.partner-link:active{
+  background-color:#d2d2d2
+}
+.partner-link-label{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-right:14px;
+}
+.partner-link-label-top{
+  font-size:18px;
+  text-transform:uppercase
+}
+.partner-link-label-bottom{
+  font-size:12px
+}
+.partner-link-icon{
+  flex:none;
+  align-self:center;
+  width:109px;
+  aspect-ratio:1;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:50px
+}
+@media(max-width:1100px){
+  .partner-link-icon{
+    width:clamp(60px,calc(4vw + 36px),80px)
+  }
+}
+.partner-link-label>*{
+  text-align:left
+}
+.icon-printer{
+  background-image:url("/images/printer.png")
+}
+.icon-pallette{
+  background-image:url("/images/Pallette.png")
+}
+.icon-market{
+  background-image:url("/images/Market.png")
+}
+.reviews-carousel{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:50px
+}
+.reviews-window{
+  flex:1;
+  min-width:0;
+  overflow:hidden
+}
+.reviews{
+  display:flex;
+  will-change:transform;
+  transition:transform .45s ease
+}
+.review-card{
+  flex:0 0 100%;
+  min-width:0;
+  margin:0;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  box-sizing:border-box
+}
+.review-photo{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  object-fit:cover;
+  flex-shrink:0
+}
+.review-content{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px
+}
+.review-text{
+  margin:0;
+  font-size:14px;
+  line-height:22px
+}
+.review-author{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.review-icon{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat
+}
+.review-name{
+  font-family:"Poppins";
+  font-size:13px;
+  text-transform:uppercase
+}
+@media(max-width:500px){
+  .review-card{
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    text-align:center
+  }
+  .review-author{
+    justify-content:center
+  }
+}
+.review-btn{
+  width:36px;
+  height:36px;
+  flex-shrink:0;
+  border:0;
+  background-color:transparent;
+  background-size:60%;
+  background-position:center;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  padding:0
+}
+.review-btn-left{
+  background-image:url("/images/left-arrow-black.png")
+}
+.review-btn-right{
+  background-image:url("/images/right-arrow-black.png")
+}
+.review-btn-left:hover{
+  background-image:url("/images/left-arrow-orange.png")
+}
+.review-btn-right:hover{
+  background-image:url("/images/right-arrow-orange.png")
+}
+@media(min-width:801px){
+  .reviews-carousel{
+    width:500px;
+    margin-left:auto;
+    margin-right:auto
+  }
+}
+
+@media(max-width:1100px){
+  h1{
+    font-size:4vw;
+    line-height:4.5vw
+  }
+}
+@media(max-width:800px){
+  #root{
+    padding:0
+  }
+  .global{
+    padding:10px
+  }
+  main{
+    padding-left:20px;
+    padding-right:20px
+  }
+  h1{
+    font-size:12vw;
+    line-height:13vw;
+    margin:20px;
+    margin-top:0px;
+    margin-bottom:0px
+  }
+  h2{
+    font-size:30px
+  }
+  .partners-links{
+    flex-direction:column
+  }
+}
+@media(max-width:600px){
+  .partners-links{
+    flex-direction:column
+  }
+}

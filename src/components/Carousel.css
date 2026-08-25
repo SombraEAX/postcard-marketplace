@@ -1,0 +1,65 @@
+.carousel{
+  height:100px;
+  width:calc((20vw + 92px) * 1.25 + 120px) !important;
+  margin-left:-60px;
+  margin-right:-60px;
+  display:flex;
+  align-items:stretch
+}
+.c-btn{
+  width:60px;
+  border:0px;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:50%;
+  cursor:pointer;
+  background-color:transparent
+}
+.c-left{
+  background-image:url('/images/left-arrow-white.png')
+}
+.c-right{
+  background-image:url('/images/right-arrow-white.png')
+}
+.c-left:hover{
+  background-image:url('/images/left-arrow-orange.png')
+}
+.c-right:hover{
+  background-image:url('/images/right-arrow-orange.png')
+}
+.c-outer{
+  flex:1;	
+  position:relative;
+  overflow:hidden
+}
+.c-inner{
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0px;
+  top:0px;
+  overflow:hidden
+}
+.c-images{	
+  user-select: none;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  height:100%
+}
+.c-image-wrapper{
+  display:flex;
+  height:100%
+}
+.c-image{
+  margin:auto;
+  border:1px solid #fff;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:top right;
+  box-sizing:border-box;
+  cursor:pointer
+}
+.c-image:hover{
+  border-color:#e98f41
+}
