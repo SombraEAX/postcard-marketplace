@@ -179,9 +179,19 @@ export default function MobileCarousel({ postcards, onSelect }: MobileCarouselPr
     )
   }
 
+  const nextRef = useRef(next)
+  const prevRef = useRef(prev)
+  const setImagesRef = useRef(setImages)
+
+  useEffect(() => {
+    nextRef.current = next
+    prevRef.current = prev
+    setImagesRef.current = setImages
+  })
+
   useEffect(() => {
     dataRef.current = calc()
-    setImages(0)
+    setImagesRef.current(0)
     if (dataRef.current) redraw(dataRef.current, 0)
 
     const onResize = () => {
@@ -195,14 +205,14 @@ export default function MobileCarousel({ postcards, onSelect }: MobileCarouselPr
       startRef.current = event.changedTouches[0].pageX
     }
     const handleTouchEnd = (event: TouchEvent) => {
-      if (event.changedTouches[0].pageX > startRef.current) prev()
-      else next()
+      if (event.changedTouches[0].pageX > startRef.current) prevRef.current()
+      else nextRef.current()
     }
     outer?.addEventListener('touchstart', handleTouchStart)
     outer?.addEventListener('touchend', handleTouchEnd)
 
     const unsubscribe = subscribe(() => {
-      setImages(activeRef.current)
+      setImagesRef.current(activeRef.current)
       if (dataRef.current) redraw(dataRef.current, animationRef.current)
     })
 

@@ -41,7 +41,6 @@ const Carousel = forwardRef<CarouselHandle, CarouselProps>(function Carousel({ p
   const stateRef = useRef({ pressed: 0, scrollX: 0, x: 0, flag: 0 })
   const selectedRef = useRef(selected)
   const animRef = useRef<(() => void) | null>(null)
-  selectedRef.current = selected
 
   const len = postcards.length
 
@@ -169,6 +168,21 @@ const Carousel = forwardRef<CarouselHandle, CarouselProps>(function Carousel({ p
     }
   }), [postcards.length, navigateInternal])
 
+  const navigateInternalRef = useRef(navigateInternal)
+  const postcardsRef = useRef(postcards)
+
+  useEffect(() => {
+    selectedRef.current = selected
+  })
+
+  useEffect(() => {
+    navigateInternalRef.current = navigateInternal
+  })
+
+  useEffect(() => {
+    postcardsRef.current = postcards
+  })
+
   useEffect(() => {
     const inner = innerRef.current
     const container = imagesRef.current
@@ -176,29 +190,27 @@ const Carousel = forwardRef<CarouselHandle, CarouselProps>(function Carousel({ p
     if (!inner || !container || !layout) return
 
     for (let i = 0; i < 3; i++) {
-      for (const [index, card] of Object.entries(postcards)) {
+      for (const [index, card] of Object.entries(postcardsRef.current)) {
         const wrapper = document.createElement('div')
         wrapper.className = 'c-image-wrapper'
         const image = document.createElement('div')
         image.className = 'c-image'
         image.style.backgroundImage = `url("${card.url}")`
-        image.onclick = (() => {
-          const idx = Number(index)
-          return () => {
-            if (stateRef.current.flag) {
-              navigateInternal(idx, 'left')
-            }
+        const idx = Number(index)
+        image.onclick = () => {
+          if (stateRef.current.flag) {
+            navigateInternalRef.current(idx, 'left')
           }
-        })()
+        }
         wrapper.append(image)
         applyItemSize(wrapper, layout.itemWidth)
         container.append(wrapper)
       }
     }
 
-    inner.scrollLeft = getImagePos(postcards.length, layout.boxWidth)
-    setImage(postcards[0])
-  }, [])
+    inner.scrollLeft = getImagePos(postcardsRef.current.length, layout.boxWidth)
+    setImage(postcardsRef.current[0])
+  }, [applyLayout, applyItemSize, getImagePos, setImage])
 
   useEffect(() => {
     const inner = innerRef.current
